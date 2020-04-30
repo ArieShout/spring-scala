@@ -59,6 +59,11 @@
         </dependency>
 
         <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-scala_2.13</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
             <version>2.9.2</version>
@@ -123,6 +128,7 @@
                             <goal>compile</goal>
                         </goals>
                         <configuration>
+                            <scalaVersion>${scala.version}</scalaVersion>
                             <recompileMode>incremental</recompileMode>
                             <args>
                                 <arg>-deprecation</arg>
@@ -139,6 +145,7 @@
                             <goal>testCompile</goal>
                         </goals>
                         <configuration>
+                            <scalaVersion>${scala.version}</scalaVersion>
                             <recompileMode>incremental</recompileMode>
                             <args>
                                 <arg>-deprecation</arg>
