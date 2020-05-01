@@ -1,7 +1,5 @@
 package me.menxiao.config
 
-;
-
 import java.util
 
 import com.fasterxml.classmate.TypeResolver
@@ -48,10 +46,10 @@ class SwaggerConfiguration {
 
       override def getOrder: Int = org.springframework.core.Ordered.HIGHEST_PRECEDENCE
 
-      private def rule[TOriginal: ClassTag : TypeTag, TAlternate: ClassTag]: AlternateTypeRule = {
+      private def rule[TOriginal: ClassTag : WeakTypeTag, TAlternate: ClassTag]: AlternateTypeRule = {
         val original = classTag[TOriginal].runtimeClass
         val alternate = classTag[TAlternate].runtimeClass
-        val arity = typeOf[TOriginal] match {
+        val arity = weakTypeOf[TOriginal] match {
           case ExistentialType(_, TypeRef(_, _, args)) => args.length
           case TypeRef(_, _, args) => args.length
         }

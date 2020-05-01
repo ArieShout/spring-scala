@@ -12,12 +12,13 @@ class WebSecurityConfiguration {
   @Bean def webSecurityConfig(dataSource: DataSource): WebSecurityConfigurerAdapter =
     new WebSecurityConfigurerAdapter() {
       override def configure(http: HttpSecurity): Unit = {
-        http.authorizeRequests.antMatchers(
-          "/console", "/console/**", "/console/",
-          "/swagger-ui.html", "/swagger-resources", "/v2/**",
-          "/**/*.css", "/**/*.js", "/**/*.png",
-          "/configuration/**").permitAll
-        http.authorizeRequests().anyRequest().authenticated()
+        //        http.authorizeRequests.antMatchers(
+        //          "/console", "/console/**", "/console/",
+        //          "/swagger-ui.html", "/swagger-resources", "/v2/**",
+        //          "/**/*.css", "/**/*.js", "/**/*.png",
+        //          "/configuration/**").permitAll
+        //        http.authorizeRequests().anyRequest().authenticated()
+        http.authorizeRequests().anyRequest().permitAll()
         http.csrf().disable()
         http.headers().frameOptions().disable()
         http.httpBasic()
