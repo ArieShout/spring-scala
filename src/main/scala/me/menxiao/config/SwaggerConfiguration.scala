@@ -32,16 +32,20 @@ class SwaggerConfiguration {
     new AlternateTypeRuleConvention {
       override def rules(): util.List[AlternateTypeRule] =
         Seq(
-          rule[Iterator[_], util.Iterator[_]],
-          rule[Iterable[_], java.lang.Iterable[_]],
           rule[mutable.Buffer[_], util.List[_]],
-          rule[mutable.Set[_], util.Set[_]],
+
           rule[Seq[_], util.List[_]],
           rule[mutable.Seq[_], util.List[_]],
+
           rule[Set[_], util.Set[_]],
-          rule[mutable.Map[_, _], util.Map[_, _]],
+          rule[mutable.Set[_], util.Set[_]],
+
           rule[collection.concurrent.Map[_, _], util.concurrent.ConcurrentMap[_, _]],
-          rule[Map[_, _], util.Map[_, _]]
+          rule[Map[_, _], util.Map[_, _]],
+          rule[mutable.Map[_, _], util.Map[_, _]],
+
+          rule[Iterable[_], java.lang.Iterable[_]],
+          rule[Iterator[_], util.Iterator[_]],
         ).asJava
 
       override def getOrder: Int = org.springframework.core.Ordered.HIGHEST_PRECEDENCE
